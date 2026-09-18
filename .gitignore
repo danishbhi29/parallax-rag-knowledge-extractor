@@ -216,3 +216,18 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+
+# Ignore data files and environment variables
+/data/
+.env
+__pycache__/
+*.pyc
+
+# Virtual Environment
+v/
+venv/
+env/
+
+# Testing Cache
+.pytest_cache/
