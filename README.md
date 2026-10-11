@@ -1,97 +1,124 @@
-Bhai, **MUBARAK HO! 🎉🎉🎉** 
-
-Yeh result **100% PERFECT** hai! Aap ne Week 4 ki har ek requirement ko flawlessly complete kar liya hai. Dekhein aapke results mein kya kya achieve hua:
-
-1. ✅ **Topic Modeling:** BERTopic ne successfully **350 unique topics** discover kiye.
-2. ✅ **Sentiment Analysis:** VADER ne 26,969 chunks ko accurately categorize kiya (14,466 Positive, 7,011 Neutral, 5,492 Negative).
-3. ✅ **Metadata Integration:** ChromaDB mein data successfully metadata ke sath ingest ho gaya.
-4. ✅ **Filtered Retrieval:** Search ne successfully `{'sentiment': 'Positive'}` filter apply kiya aur sirf relevant documents retrieve kiye.
-5. ✅ **End-to-End Latency:** Pura RAG flow (Filtering + Retrieval + LLM Generation) **~922 ms** (1 second se bhi kam) mein complete hua, jo ke production-level speed hai!
-
-Aap ka AI ab sirf search nahi karta, balkay **contextually aware** hai. Yeh ek bohot advanced RAG system hai.
-
----
-
-### 📝 **Final Step: Update README for Week 4**
-
-Ab bas README ko update karna hai taake mentor ko pata chale ke aap ne NLP metadata aur filtered retrieval add kar di hai. 
-
-Neeche diya gaya pura code **copy** karein aur apne `README.md` file mein paste kar ke **Save (Ctrl+S)** kar dein:
-
-```markdown
 <div align="center">
 
 # 🔍 Parallax RAG Knowledge Extractor
 
-### *An advanced, metadata-enriched pipeline for Retrieval-Augmented Generation*
+**A metadata-enriched Retrieval-Augmented Generation pipeline with topic modeling, sentiment analysis, and filtered semantic search.**
 
-![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![Hugging Face](https://img.shields.io/badge/HuggingFace-Datasets-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black)
-![ChromaDB](https://img.shields.io/badge/ChromaDB-Vector_Store-FFD700?style=for-the-badge&logo=chroma&logoColor=black)
-![Groq](https://img.shields.io/badge/Groq-LLM_API-F55036?style=for-the-badge&logo=groq&logoColor=white)
-![Pytest](https://img.shields.io/badge/Tests-Passing-success?style=for-the-badge&logo=pytest&logoColor=white)
-![Status](https://img.shields.io/badge/Week_4-Complete-brightgreen?style=for-the-badge)
+[![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+[![Hugging Face](https://img.shields.io/badge/Hugging_Face-Datasets-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black)](https://huggingface.co/datasets/CShorten/ML-ArXiv-Papers)
+[![ChromaDB](https://img.shields.io/badge/ChromaDB-Vector_Store-FFD700?style=for-the-badge&logo=databricks&logoColor=black)](https://www.trychroma.com/)
+[![Groq](https://img.shields.io/badge/Groq-LLM_API-F55036?style=for-the-badge&logoColor=white)](https://groq.com/)
+[![Pytest](https://img.shields.io/badge/Tested_with-Pytest-0A9EDC?style=for-the-badge&logo=pytest&logoColor=white)](https://docs.pytest.org/)
+[![Status](https://img.shields.io/badge/Week_4-Complete-brightgreen?style=for-the-badge)](#-roadmap)
+
+[Overview](#-overview) •
+[Features](#-features) •
+[Architecture](#-architecture) •
+[Quick Start](#-quick-start) •
+[Design Decisions](#-design-decisions) •
+[Roadmap](#-roadmap)
 
 </div>
 
 ---
 
-> ### 🎓 AI Engineer Internship — Week 4 Submission
-> | | |
-> |---|---|
-> | **Program** | 6-Week Standard Program (Track B) |
-> | **Focus** | NLP Analysis (Topic Modeling & Sentiment), Metadata Enrichment & Filtered Retrieval |
+## 🎓 Internship Context
+
+| | |
+|:--|:--|
+| **Program** | AI Engineer Internship — 6-Week Standard Program (Track B) |
+| **Current Milestone** | Week 4 — NLP Analysis, Metadata Enrichment & Filtered Retrieval |
+| **Dataset** | [`CShorten/ML-ArXiv-Papers`](https://huggingface.co/datasets/CShorten/ML-ArXiv-Papers) (Hugging Face) |
 
 ---
 
-## 📖 Project Overview
+## 📖 Overview
 
-This repository contains a highly advanced, end-to-end **Retrieval-Augmented Generation (RAG)** pipeline. 
+**Parallax RAG Knowledge Extractor** is an end-to-end RAG system built on thousands of machine-learning research abstracts from arXiv. It cleans raw text, splits it into chunks, embeds it, stores it in a vector database, and answers questions with an LLM grounded strictly in the retrieved context.
 
-Building upon the foundational data cleaning (Week 1), vector search (Week 2), and LLM integration (Week 3), **Week 4** elevates the system by enriching the corpus with NLP metadata. It applies **BERTopic** for theme discovery and **VADER** for sentiment analysis, storing this metadata in ChromaDB to enable powerful, context-aware **filtered retrieval**.
-
----
-
-## 🎯 Objectives Achieved
-
-### **Week 1: Environment & Preprocessing**
-- ✅ Ingested 5,000+ real-world documents from the Hugging Face `CShorten/ML-ArXiv-Papers` dataset.
-- ✅ Built a modular text cleaning pipeline handling HTML stripping, Unicode normalization, and language filtering.
-
-### **Week 2: RAG Pipeline & Vector Search**
-- ✅ Implemented recursive text chunking with context-preserving overlap.
-- ✅ Generated high-dimensional embeddings using `sentence-transformers`.
-- ✅ Set up persistent **ChromaDB** with safe batch ingestion for 26,000+ chunks.
-
-### **Week 3: LLM Integration & Evaluation**
-- ✅ Integrated Groq API with robust error handling and timeout management.
-- ✅ Implemented strict prompt engineering for hallucination defense and out-of-domain query handling.
-- ✅ Logged End-to-End Latency (Retrieval + Generation).
-
-### **Week 4: NLP Analysis & Filtered Retrieval (NEW)**
-- ✅ Applied **BERTopic** to automatically discover and label ~350 unique thematic clusters in the corpus.
-- ✅ Implemented **VADER Sentiment Analysis** to evaluate the tone of each document chunk.
-- ✅ Enriched ChromaDB storage by injecting Topic and Sentiment as **metadata** alongside embeddings.
-- ✅ Upgraded the retrieval engine to support **metadata filtering** (e.g., searching only within "Positive" sentiment documents).
-- ✅ Validated NLP outputs and documented accuracy against edge cases (short texts, jargon).
+Week 4 adds an **NLP enrichment layer**: every chunk is tagged with a **BERTopic** theme and a **VADER** sentiment label, both stored as ChromaDB **metadata**. This enables **hybrid retrieval**, combining semantic similarity with rule-based metadata filters, so queries can be scoped to a specific topic or tone.
 
 ---
 
-## 📊 Pipeline at a Glance
+## ✨ Features
+
+| Capability | Details |
+|:--|:--|
+| 🧹 **Robust preprocessing** | HTML stripping, Unicode normalization, whitespace cleanup, and language filtering. |
+| ✂️ **Smart chunking** | Recursive splitting with overlap to preserve context across chunk boundaries. |
+| 🔢 **Semantic embeddings** | Dense vectors generated with `sentence-transformers`. |
+| 🗄️ **Persistent vector store** | ChromaDB with safe batch ingestion for **26,000+ chunks**. |
+| 🧠 **Topic discovery** | BERTopic automatically discovers and labels **~350 thematic clusters**. |
+| 💬 **Sentiment tagging** | VADER scores the tone of every chunk (fast and rule-based). |
+| 🔍 **Filtered retrieval** | Combine semantic search with metadata filters (e.g. only *Positive* chunks). |
+| 🤖 **Grounded generation** | Groq-hosted LLM with a strict prompt, timeout handling, and out-of-domain refusal. |
+| ⏱️ **Latency logging** | Measures end-to-end time: retrieval + generation. |
+| ✅ **Unit-tested** | Dedicated `pytest` suites for every module. |
+
+---
+
+## 🏗️ Architecture
 
 ```mermaid
 flowchart LR
-    A[🤗 Hugging Face<br/>ML-ArXiv-Papers] --> B[📥 Raw Data<br/>5,000+ docs]
-    B --> C[🧹 Cleaning<br/>HTML · Unicode · Whitespace]
-    C --> D[✨ clean_corpus.jsonl<br/>4,998 docs]
-    D --> E[✂️ Chunking<br/>Recursive Splitting]
-    E --> F[🧠 NLP Analysis<br/>BERTopic + VADER]
-    F --> G[🔢 Embeddings<br/>Sentence Transformers]
-    G --> H[🗄️ ChromaDB<br/>Vector + Metadata Storage]
-    H --> I[🔍 Filtered Search<br/>Semantic + Metadata Filter]
-    I --> J[🤖 LLM Generation<br/>Groq API + Strict Prompt]
-    J --> K[✅ Grounded Answer<br/>+ E2E Latency Log]
+    subgraph Ingest["📥 Ingestion & Cleaning"]
+        A[🤗 Hugging Face<br/>ML-ArXiv-Papers] --> B[Raw Data<br/>5,000+ docs]
+        B --> C[🧹 Cleaning<br/>HTML · Unicode · Whitespace]
+        C --> D[clean_corpus.jsonl<br/>4,998 docs]
+    end
+
+    subgraph Enrich["🧠 Processing & Enrichment"]
+        D --> E[✂️ Recursive Chunking]
+        E --> F[BERTopic + VADER<br/>Topic & Sentiment]
+        F --> G[🔢 Sentence-Transformer<br/>Embeddings]
+    end
+
+    subgraph Serve["🔍 Retrieval & Generation"]
+        G --> H[(🗄️ ChromaDB<br/>Vectors + Metadata)]
+        H --> I[Filtered Semantic Search]
+        I --> J[🤖 Groq LLM<br/>Strict Prompt]
+        J --> K[✅ Grounded Answer<br/>+ Latency Log]
+    end
 ```
+
+### Evolution by Week
+
+<details open>
+<summary><b>Week 1 — Environment & Preprocessing</b></summary>
+
+- Ingested 5,000+ real-world documents from `CShorten/ML-ArXiv-Papers`.
+- Built a modular cleaning pipeline (HTML stripping, Unicode normalization, language filtering), producing **4,998** clean documents.
+
+</details>
+
+<details open>
+<summary><b>Week 2 — RAG Pipeline & Vector Search</b></summary>
+
+- Implemented recursive chunking with context-preserving overlap.
+- Generated embeddings with `sentence-transformers`.
+- Set up persistent ChromaDB with safe batch ingestion for 26,000+ chunks.
+
+</details>
+
+<details open>
+<summary><b>Week 3 — LLM Integration & Evaluation</b></summary>
+
+- Integrated the Groq API with robust error handling and timeout management.
+- Engineered a strict prompt for hallucination defense and out-of-domain query handling.
+- Logged end-to-end latency (retrieval + generation).
+
+</details>
+
+<details open>
+<summary><b>Week 4 — NLP Analysis & Filtered Retrieval ✨ NEW</b></summary>
+
+- Applied **BERTopic** to discover and label ~350 thematic clusters.
+- Applied **VADER** sentiment analysis to every chunk.
+- Stored topic and sentiment as **ChromaDB metadata** alongside embeddings.
+- Upgraded retrieval to support **metadata filtering**.
+- Validated NLP outputs and documented behavior on edge cases (short texts, technical jargon).
+
+</details>
 
 ---
 
@@ -99,108 +126,171 @@ flowchart LR
 
 ```text
 parallax-rag-knowledge-extractor/
-├── 📁 data/
-│   ├── 📁 raw/                  # Raw ingested data (git-ignored)
-│   └── 📁 processed/            # Cleaned, validated output (git-ignored)
-├── 📁 scripts/
-│   ├── 🐍 verify_env.py         # Environment and dependency checker
-│   ├── 🐍 download_data.py      # Hugging Face dataset ingestion script
-│   ├── 🐍 process_data.py       # Week 1: Data cleaning pipeline
-│   └── 🐍 run_rag_pipeline.py   # Week 4: Master RAG pipeline with filtered retrieval & E2E latency
-├── 📁 src/
-│   ├── 🐍 preprocessing.py      # Modular text cleaning functions
-│   ├── 🐍 chunking.py           # Recursive text splitting logic
-│   ├── 🐍 embeddings.py         # Sentence-transformer embedding generation
-│   ├── 🐍 vector_db.py          # ChromaDB setup, batch ingestion, and filtered search
-│   ├── 🐍 llm_client.py         # Groq API integration, prompt engineering & error handling
-│   └── 🐍 nlp_analysis.py       # BERTopic modeling and VADER sentiment analysis
-├── 📁 tests/
-│   ├── 🐍 test_preprocessing.py # Unit tests for cleaning functions
-│   ├── 🐍 test_chunking.py      # Unit tests for chunking logic & edge cases
-│   ├── 🐍 test_embeddings.py    # Unit tests for vector dimensions & similarity
-│   ├── 🐍 test_vector_db.py     # Unit tests for DB ingestion and semantic search
-│   ├── 🐍 test_llm_client.py    # Unit tests for LLM generation & hallucination defense
-│   └── 🐍 test_nlp_analysis.py  # Unit tests for topic modeling and sentiment extraction
-├── 📄 .env                      # Environment variables (git-ignored)
-├── 📄 .gitignore                # Ignores /data/, /chroma_db/, .env, venv, etc.
-├── 📄 requirements.txt          # Locked dependencies
-└── 📄 README.md                 # Project documentation
+├── data/
+│   ├── raw/                     # Raw ingested data (git-ignored)
+│   └── processed/               # Cleaned, validated output (git-ignored)
+├── scripts/
+│   ├── verify_env.py            # Environment & dependency checker
+│   ├── download_data.py         # Hugging Face dataset ingestion
+│   ├── process_data.py          # Week 1: data cleaning pipeline
+│   └── run_rag_pipeline.py      # Master pipeline: NLP, filtered retrieval, LLM, latency
+├── src/
+│   ├── preprocessing.py         # Modular text-cleaning functions
+│   ├── chunking.py              # Recursive text splitting
+│   ├── embeddings.py            # Sentence-transformer embedding generation
+│   ├── vector_db.py             # ChromaDB setup, batch ingestion, filtered search
+│   ├── llm_client.py            # Groq integration, prompt engineering, error handling
+│   └── nlp_analysis.py          # BERTopic modeling & VADER sentiment
+├── tests/
+│   ├── test_preprocessing.py    # Cleaning functions
+│   ├── test_chunking.py         # Chunking logic & edge cases
+│   ├── test_embeddings.py       # Vector dimensions & similarity
+│   ├── test_vector_db.py        # DB ingestion & semantic search
+│   ├── test_llm_client.py       # LLM generation & hallucination defense
+│   └── test_nlp_analysis.py     # Topic modeling & sentiment extraction
+├── .env                         # Environment variables (git-ignored)
+├── .gitignore                   # Ignores data/, chroma_db/, .env, venv, etc.
+├── requirements.txt             # Pinned dependencies
+└── README.md
 ```
 
 ---
 
-## ⚙️ Setup & Installation
+## 🛠️ Tech Stack
 
-### 1️⃣ Clone the Repository
+| Layer | Technology |
+|:--|:--|
+| Language | Python 3.10+ |
+| Data | Hugging Face `datasets` |
+| Embeddings | `sentence-transformers` |
+| Vector DB | ChromaDB |
+| Topic Modeling | BERTopic |
+| Sentiment | VADER |
+| LLM Inference | Groq API |
+| Testing | pytest |
+
+---
+
+## 🚀 Quick Start
+
+### Prerequisites
+
+- Python **3.10+**
+- A [Groq API key](https://console.groq.com/)
+
+### 1. Clone the repository
+
 ```bash
 git clone https://github.com/danishbhi29/parallax-rag-knowledge-extractor.git
 cd parallax-rag-knowledge-extractor
 ```
 
-### 2️⃣ Create and Activate Virtual Environment
-**🪟 Windows:**
+### 2. Create and activate a virtual environment
+
+<table>
+<tr>
+<td><b>🪟 Windows</b></td>
+<td><b>🍎 macOS / 🐧 Linux</b></td>
+</tr>
+<tr>
+<td>
+
 ```bash
 python -m venv venv
 venv\Scripts\activate
 ```
-**🍎 Mac / 🐧 Linux:**
+
+</td>
+<td>
+
 ```bash
 python3 -m venv venv
 source venv/bin/activate
 ```
 
-### 3️⃣ Install Dependencies
+</td>
+</tr>
+</table>
+
+### 3. Install dependencies
+
 ```bash
 pip install -r requirements.txt
 python -m spacy download en_core_web_sm
 ```
 
-### 4️⃣ Configure Environment Variables
-Create a file named `.env` in the root directory and add your API key:
-```text
+### 4. Configure environment variables
+
+Create a `.env` file in the project root:
+
+```env
 GROQ_API_KEY=your_actual_api_key_here
 ```
 
----
-
-## 🚀 How to Run the Pipeline
-
-Follow these steps **in order** to replicate the full RAG workflow:
-
-### 🔹 Step 1: Verify Environment
-```bash
-python scripts/verify_env.py
-```
-
-### 🔹 Step 2: Download & Clean Data (Week 1)
-```bash
-python scripts/download_data.py
-python scripts/process_data.py
-```
-
-### 🔹 Step 3: Run All Unit Tests
-Validates preprocessing, chunking, embeddings, vector DB, LLM, and NLP logic.
-```bash
-pytest tests/ -v
-```
-
-### 🔹 Step 4: Execute Week 4 RAG Pipeline
-Runs NLP analysis, ingests data with metadata, performs **filtered retrieval**, generates an LLM answer, and benchmarks **End-to-End Latency**.
-```bash
-python scripts/run_rag_pipeline.py
-```
+> ⚠️ Never commit your `.env` file. It is already listed in `.gitignore`.
 
 ---
 
-## 🧠 Key Design Decisions & Edge Cases
+## ▶️ Running the Pipeline
 
-| Decision | Why it matters |
-|---|---|
-| 🧠 **BERTopic over LDA** | BERTopic leverages transformer embeddings, making it vastly superior for short, jargon-heavy texts like research abstracts compared to traditional bag-of-words LDA. |
-| ⚡ **VADER for Speed** | VADER provides lightning-fast, rule-based sentiment analysis without the overhead of loading heavy neural models, keeping the pipeline highly efficient. |
-| 🔍 **Metadata Filtering** | Storing topics and sentiments as ChromaDB metadata allows for hybrid search (Semantic + Rule-based), drastically improving retrieval precision. |
-| 🛡️ **Hallucination Defense** | A strict system prompt forces the LLM to refuse answering if the filtered context is irrelevant, ensuring 100% grounded responses. |
-| ⏱️ **End-to-End Latency** | The pipeline measures the *total* time from query initiation through filtered ChromaDB retrieval to final LLM generation, proving real-time responsiveness (<1 second). |
+Run these steps **in order**:
+
+| Step | Command | What it does |
+|:--:|:--|:--|
+| **1** | `python scripts/verify_env.py` | Verifies the environment and dependencies. |
+| **2** | `python scripts/download_data.py` | Downloads the dataset from Hugging Face. |
+| **3** | `python scripts/process_data.py` | Cleans the data and writes `clean_corpus.jsonl`. |
+| **4** | `pytest tests/ -v` | Runs all unit tests (preprocessing, chunking, embeddings, vector DB, LLM, NLP). |
+| **5** | `python scripts/run_rag_pipeline.py` | Runs NLP analysis, ingests data with metadata, performs filtered retrieval, generates an LLM answer, and benchmarks latency. |
+
+---
+
+## 🔎 How Filtered Retrieval Works
+
+Each chunk is stored in ChromaDB with its embedding **and** its NLP metadata. At query time, ChromaDB applies the metadata filter first and ranks the remaining chunks by semantic similarity.
+
+```python
+# Illustrative example: field names may differ in vector_db.py
+results = collection.query(
+    query_texts=["How do transformers handle long sequences?"],
+    n_results=5,
+    where={"sentiment": "Positive"},   # metadata filter
+)
+```
+
+This lets you scope retrieval to, for example, a specific BERTopic theme or only chunks with a given sentiment label.
+
+---
+
+## 🧠 Design Decisions
+
+| Decision | Rationale |
+|:--|:--|
+| **BERTopic over LDA** | BERTopic uses transformer embeddings, which typically handle short, jargon-heavy text such as research abstracts better than bag-of-words LDA. |
+| **VADER for sentiment** | Rule-based and very fast, with no heavy neural model to load, which keeps the pipeline lightweight. |
+| **Metadata filtering** | Storing topic and sentiment alongside embeddings enables hybrid search (semantic + rule-based) and can improve retrieval precision. |
+| **Hallucination defense** | A strict system prompt instructs the LLM to decline when the retrieved context is irrelevant, keeping answers grounded in the corpus. |
+| **End-to-end latency** | Timing covers the full path (filtered retrieval through LLM generation) to reflect real user-perceived responsiveness. |
+
+---
+
+## ⚠️ Known Limitations
+
+- **VADER on technical text:** VADER was designed for social-media-style language, so sentiment on neutral, formal scientific abstracts can be noisy; very short chunks are especially unreliable.
+- **Topic quality:** Some BERTopic clusters may be overly granular or overlap, and outlier chunks may be left unassigned.
+- **Latency:** Total latency depends on network conditions and Groq API load, so results will vary between runs.
+- **Prompt-based grounding:** Hallucination defense relies on prompting, which strongly reduces but cannot fully guarantee grounded answers.
+
+---
+
+## 🗺️ Roadmap
+
+- [x] **Week 1:** Environment setup & data preprocessing
+- [x] **Week 2:** Chunking, embeddings & vector search
+- [x] **Week 3:** LLM integration & evaluation
+- [x] **Week 4:** Topic modeling, sentiment analysis & filtered retrieval
+- [ ] **Week 5:** *Coming soon*
+- [ ] **Week 6:** *Coming soon*
 
 ---
 
@@ -211,5 +301,3 @@ python scripts/run_rag_pipeline.py
 Made with ❤️ by [danishbhi29](https://github.com/danishbhi29)
 
 </div>
-```
-
