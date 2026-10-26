@@ -27,21 +27,18 @@ def ingest_chunks(collection, chunks, embeddings, ids, metadatas=None, batch_siz
     if ids is None:
         ids = [f"chunk_{i}" for i in range(len(chunks))]
         
-    # If no metadata provided, create empty dicts to satisfy ChromaDB requirements
-    if metadatas is None:
-        metadatas = [{} for _ in range(len(chunks))]
-
     total_chunks = len(chunks)
     logging.info(f"Starting ingestion of {total_chunks} chunks into ChromaDB (Batch size: {batch_size})...")
     
     for i in range(0, total_chunks, batch_size):
         batch_end = i + batch_size
+        batch_metadatas = metadatas[i:batch_end] if metadatas is not None else None
         
         collection.add(
             documents=chunks[i:batch_end],
             embeddings=embeddings[i:batch_end],
             ids=ids[i:batch_end],
-            metadatas=metadatas[i:batch_end] # <-- NEW: Adding metadata here
+            metadatas=batch_metadatas
         )
         
         logging.info(f"   - Ingested batch {i//batch_size + 1} ({len(chunks[i:batch_end])} chunks)")
